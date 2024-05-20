@@ -4,7 +4,7 @@
 set -eu
 
 #Build a Docker image
-docker build -f $DOCKER_HUB_REPO_NAME/Dockerfile -t $DOKER_HUB_USERNAME/$DOCKER_HUB_REPO_NAME$:$IMAGE_TAG .
+docker build -f $DOCKER_HUB_REPO_NAME/Dockerfile -t $DOKER_HUB_USERNAME/$DOCKER_HUB_REPO_NAME$: .
 
 #IMAGE_TAG: $(CODEBUILD_RESOLVED_SOURCE_VERSION)
 
