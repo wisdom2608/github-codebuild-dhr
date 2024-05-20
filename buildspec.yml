@@ -1,0 +1,20 @@
+#Build a Docker Image and push it to docker hub using AWS Codebuild with github as a source provider.
+version: 0.2
+
+phases:
+
+  pre_build: 
+    commands:
+      - chmod +x build-image.sh push-image.sh  # Chmod +x command renders *build-image.sh* and *push-image.sh* files executable.
+      - ./build-image.sh #CodeBuild will build the docker image
+
+  build:
+    commands:
+      - ./push-image.sh #CodeBuild login to Docker Hub and push the image to Docker hub repository.
+
+##Generally most buildspec.yml files are written such that we have the following phases:
+# 1) pre_build phase: In this phase, CodeBuild login to Docker Hub.
+# 2) build phase: In this phase CodeBuild builds the Docker image.
+# 3) post_build phase: In this phase CodeBuild push the Docker image to Docker Hub repository.
+
+# NB: Do check the *build-image.sh* file and see what is explained there.
