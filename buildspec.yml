@@ -5,7 +5,7 @@ phases:
 
   pre_build: 
     commands:
-      - chmod +x build-image.sh push-image.sh  # Chmod +x command renders *build-image.sh* and *push-image.sh* files executable.
+      - chmod +x build-image.sh push-image.sh  version.sh # Chmod +x command renders *build-image.sh* and *push-image.sh* files executable.
       - ./build-image.sh #CodeBuild will build the docker image
 
   build:
