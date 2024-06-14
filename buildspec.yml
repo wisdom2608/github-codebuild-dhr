@@ -18,3 +18,34 @@ phases:
 # 3) post_build phase: In this phase CodeBuild push the Docker image to Docker Hub repository.
 
 # NB: Do check the *build-image.sh* file and see what is explained there.
+
+
+
+                             ## STEPS !!!
+# 1) Create a Docker hub repository. The repository will habor the image to be pushed from github.
+# 2) Go to AWS service, search for CodeBuild, Create a codebuild project:
+# - a) For source, select Github.
+# - b) For repository, select "Repository in my GitHub account" then go to your github account and select the repo name.
+# - c) For Primary source webhook events, check "Rebuild every time a code change is pushed to this repository" This will trigger codebuild automatically whenever a push is made on the required branch.
+# - d) For Environment, select environment image.
+# - e) For operating system, select ubuntu.
+# - f) For Runtime, select standarg
+# - g) For image, select the latest version.
+# - h) Select prilledged to execute docker commands inside codebuild.
+
+# 3) Create environment variables in CodeBuild, put the:
+# - a) value of DOKER_HUB_USERNAME as the Docker hub user name.
+# - b) value of DOCKER_HUB_REPO_NAME as the repository name in Dockerhub.
+# - c) value of IMAGE_TAG, as latest.
+# - d) value of $DOKER_HUB_PASSWORD as the Docker Acces Token.
+
+
+# 4) Set IAM permisions for Codebuild to login to AWS ECR. To set IAM permissions:
+   # (i) Go to IAM service dash board,
+   # (ii) Click on Policies,
+   # (iii) Search for *AmazonEC2containerRegistryFullAccess* on the search bar,
+   # (iv) Select the policy,
+   # (vi) Click on *action* and select *attach* to  grant the full access policy to codebuild,
+   # (vii) Select the name of the project you just created on codebuild, and click on *attach policy*.
+   # (viii) click on *start build* to start building the image.
+
