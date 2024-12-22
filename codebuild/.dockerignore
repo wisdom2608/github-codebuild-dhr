@@ -1,4 +1,4 @@
-# dockerignore files prevent unecessary files and secrete files to be copied to a conainer when building a docker image. 
+# A .dockerignore file prevents unecessary files and secrete files to be copied to a container when building a docker image. 
 # Example:
 Dockerfile
 .dockerignore
